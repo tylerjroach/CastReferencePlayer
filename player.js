@@ -600,7 +600,7 @@ sampleplayer.CastPlayer.prototype.preloadVideo_ = function(mediaInformation) {
     self.displayPreviewMode_ = false;
     self.log_('Error during preload');
   };
-  self.preloadPlayer_ = new cast.player.api.Player(host, 0);
+  self.preloadPlayer_ = new cast.player.api.Player(host, cast.player.api.HlsSegmentFormat.MPEG2_TS);
   self.preloadPlayer_.preload(protocolFunc(host), initStart);
   return true;
 };
@@ -838,7 +838,7 @@ sampleplayer.CastPlayer.prototype.loadVideo_ = function(info) {
         'mediaElement': this.mediaElement_
       });
       host.onError = loadErrorCallback;
-      this.player_ = new cast.player.api.Player(host, 0);
+      this.player_ = new cast.player.api.Player(host, cast.player.api.HlsSegmentFormat.MPEG2_TS);
       this.player_.load(protocolFunc(host), initStart);
     } else {
       this.log_('Preloaded video load');
@@ -1003,7 +1003,7 @@ sampleplayer.CastPlayer.prototype.processTtmlCues_ =
         'mediaElement': this.mediaElement_
       });
       this.protocol_ = null;
-      this.player_ = new cast.player.api.Player(host, 0);
+      this.player_ = new cast.player.api.Player(host, cast.player.api.HlsSegmentFormat.MPEG2_TS);
     }
     this.player_.enableCaptions(
         true, cast.player.api.CaptionsType.TTML, tracks[i].trackContentId);
