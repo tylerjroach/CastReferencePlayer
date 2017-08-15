@@ -583,7 +583,7 @@ sampleplayer.CastPlayer.prototype.preloadVideo_ = function(mediaInformation) {
   var self = this;
   var url = mediaInformation.contentId;
   var protocolFunc = sampleplayer.getProtocolFunction_(mediaInformation);
-  var initStart = info.message.currentTime - 10;
+  var initStart = info.message.currentTime;
   if (!protocolFunc) {
     this.log_('No protocol found for preload');
     return false;
@@ -798,7 +798,7 @@ sampleplayer.CastPlayer.prototype.loadVideo_ = function(info) {
   var protocolFunc = null;
   var url = info.message.media.contentId;
   var protocolFunc = sampleplayer.getProtocolFunction_(info.message.media);
-  var initStart = info.message.currentTime - 10;
+  var initStart = info.message.currentTime;
   var wasPreloaded = false;
 
   this.letPlayerHandleAutoPlay_(info);
