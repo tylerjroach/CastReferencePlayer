@@ -236,7 +236,6 @@ sampleplayer.CastPlayer = function(element) {
    */
   this.mediaElement_ = /** @type {HTMLMediaElement} */
       (this.element_.querySelector('video'));
-  this.mediaElement_.addEventListener('error', this.onError_.bind(this), false);
   this.mediaElement_.addEventListener('playing', this.onPlaying_.bind(this),
       false);
   this.mediaElement_.addEventListener('pause', this.onPause_.bind(this), false);
