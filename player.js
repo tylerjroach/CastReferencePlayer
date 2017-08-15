@@ -1744,6 +1744,7 @@ sampleplayer.getProtocolFunction_ = function(mediaInformation) {
   if (sampleplayer.getExtension_(path) === 'm3u8' ||
           type === 'application/x-mpegurl' ||
           type === 'application/vnd.apple.mpegurl') {
+    console.log("USING HLS EXTENSION")
     return cast.player.api.CreateHlsStreamingProtocol;
   } else if (sampleplayer.getExtension_(path) === 'mpd' ||
           type === 'application/dash+xml') {
