@@ -600,7 +600,7 @@ sampleplayer.CastPlayer.prototype.preloadVideo_ = function(mediaInformation) {
     self.displayPreviewMode_ = false;
     self.log_('Error during preload');
   };
-  self.preloadPlayer_ = new cast.player.api.Player(host);
+  self.preloadPlayer_ = new cast.player.api.Player(host, 0);
   self.preloadPlayer_.preload(protocolFunc(host), initStart);
   return true;
 };
@@ -838,7 +838,7 @@ sampleplayer.CastPlayer.prototype.loadVideo_ = function(info) {
         'mediaElement': this.mediaElement_
       });
       host.onError = loadErrorCallback;
-      this.player_ = new cast.player.api.Player(host);
+      this.player_ = new cast.player.api.Player(host, 0);
       this.player_.load(protocolFunc(host), initStart);
     } else {
       this.log_('Preloaded video load');
@@ -1003,7 +1003,7 @@ sampleplayer.CastPlayer.prototype.processTtmlCues_ =
         'mediaElement': this.mediaElement_
       });
       this.protocol_ = null;
-      this.player_ = new cast.player.api.Player(host);
+      this.player_ = new cast.player.api.Player(host, 0);
     }
     this.player_.enableCaptions(
         true, cast.player.api.CaptionsType.TTML, tracks[i].trackContentId);
@@ -1744,7 +1744,6 @@ sampleplayer.getProtocolFunction_ = function(mediaInformation) {
   if (sampleplayer.getExtension_(path) === 'm3u8' ||
           type === 'application/x-mpegurl' ||
           type === 'application/vnd.apple.mpegurl') {
-    console.log("USING HLS EXTENSION")
     return cast.player.api.CreateHlsStreamingProtocol;
   } else if (sampleplayer.getExtension_(path) === 'mpd' ||
           type === 'application/dash+xml') {
