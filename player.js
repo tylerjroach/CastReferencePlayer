@@ -1309,7 +1309,8 @@ sampleplayer.CastPlayer.prototype.onSenderDisconnected_ = function(event) {
  * @private
  */
 sampleplayer.CastPlayer.prototype.onError_ = function(error) {
-  this.log_("CAST ERROR: " + error.toString());
+  this.log_("CAST ERROR");
+  console.dir(error);
   var self = this;
   sampleplayer.transition_(self.element_, sampleplayer.TRANSITION_DURATION_,
       function() {
