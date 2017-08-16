@@ -238,6 +238,7 @@ sampleplayer.CastPlayer = function(element) {
       (this.element_.querySelector('video'));
   this.mediaElement_.addEventListener('playing', this.onPlaying_.bind(this),
       false);
+  this.mediaElement_.addEventListener('error', this.onError_.bind(this), false);
   this.mediaElement_.addEventListener('pause', this.onPause_.bind(this), false);
   this.mediaElement_.addEventListener('ended', this.onEnded_.bind(this), false);
   this.mediaElement_.addEventListener('abort', this.onAbort_.bind(this), false);
@@ -1308,7 +1309,7 @@ sampleplayer.CastPlayer.prototype.onSenderDisconnected_ = function(event) {
  * @private
  */
 sampleplayer.CastPlayer.prototype.onError_ = function(error) {
-  this.log_('onError');
+  this.log_(error);
   var self = this;
   sampleplayer.transition_(self.element_, sampleplayer.TRANSITION_DURATION_,
       function() {
